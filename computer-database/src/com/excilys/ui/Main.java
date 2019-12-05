@@ -20,11 +20,13 @@ public class Main {
 		}*/
 
 			
-			//System.out.println((new ComputerDAO().findOne(9)).toString());
+			//System.out.println((new ComputerDAO().findOne(5)).toString());
 			
-			//new ComputerDAO().delete(100);
-		//new ComputerDAO().create("MacBook 16", new Date(), new Date(), 2);
-
+			//new ComputerDAO().delete(102);
+		
+		//new ComputerDAO().create("MacBook 16", null, null, 2);
+		
+		//new ComputerDAO().update(63);
 		
 	}
 
