@@ -6,6 +6,11 @@ public class Company {
 	private String nameCompany;
 	
 	
+	public Company(int idCompany, String nameCompany) {
+		this.idCompany = idCompany;
+		this.nameCompany = nameCompany;
+	}
+
 	public int getIdCompany() {
 		return idCompany;
 	}

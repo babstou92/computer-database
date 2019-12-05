@@ -2,6 +2,8 @@ package com.excilys.models;
 
 import java.util.Date;
 
+import com.excilys.models.Company;
+
 public class Computer {
 	
 	private int idComputer;
@@ -9,6 +11,15 @@ public class Computer {
 	private Date introducedDateComputer;
 	private Date discontinuedDateComputer;
 	private  int companyIdComputer;
+	private Company company;
+	
+	public Computer(int id, String name, Date introduced, Date discontinued, Company company) {
+		this.idComputer = id;
+		this.nameComputer = name;
+		this.introducedDateComputer = introduced;
+		this.discontinuedDateComputer = discontinued;
+		this.company = company;
+	}
 	
 	
 	public int getIdComputer() {
@@ -52,11 +63,21 @@ public class Computer {
 	}
 
 
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+
 	public String toString() {
 		return "Computer [idComputer=" + idComputer + ", nameComputer=" + nameComputer + ", introducedDateComputer="
 				+ introducedDateComputer + ", discontinuedDateComputer=" + discontinuedDateComputer
-				+ ", companyIdComputer=" + companyIdComputer + "]";
+				+ ", companyIdComputer=" + companyIdComputer + ", company=" + company + "]";
 	}
+
 	
 	
 }
