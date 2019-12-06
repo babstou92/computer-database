@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-			
+		//test	
 		Scanner scanner = new Scanner(System.in);
 		String choixQuitter;
 		int choixCommande;
