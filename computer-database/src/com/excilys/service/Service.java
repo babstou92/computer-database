@@ -22,19 +22,19 @@ public class Service {
 		}
 	}
 
-	public static void findOneComputer() {	
-		System.out.println((computerDAO.findOne(5)).toString());
+	public static void findOneComputer(int id) {	
+		System.out.println((computerDAO.findOne(id)).toString());
 	}
 	
 	public static void deleteOneComputer() {
-		computerDAO.delete(102);
+		computerDAO.delete(13);
 	}
 	
 	public static void createOneComputer() {
 		computerDAO.create("MacBook 16", null, null, 2);
 	}
-	
+	//a terminé
 	public static void updateOneComputer() {
-		computerDAO.update(63);
+		//computerDAO.update(63);
 	}
 }

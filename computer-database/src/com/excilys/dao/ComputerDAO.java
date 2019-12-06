@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -137,14 +138,14 @@ public class ComputerDAO {
 	}
 
 
-	public void update(int idSearch) {
+	public void update(String computerName, Date introduced, Date discontinued, int company_id, int idSearch) {
 		try { 
 			
 			//LocalDate.parse("2011-25-04", DateTimeFormatter.ISO_DATE);
 			PreparedStatement prepState = connect.prepareStatement(UPDATE_ONE);
-			prepState.setString(1,"macbook pro 16 toutes options" );
-			//prepState.setDate(2, "2011-25-04");
-			//prepState.setDate(3, "2011-25-04");
+			prepState.setString(1,computerName );
+			prepState.setTimestamp(2, new Timestamp(introduced.getTime()));
+			prepState.setTimestamp(3, new Timestamp(discontinued.getTime()));
 			prepState.setInt(4, 2);
 			
 			prepState.executeUpdate();
