@@ -18,13 +18,14 @@ public class ComputerDAO {
 	
 	
 	public Connection connect = ConnectionSQL.seConnecter();
+	private static ComputerDAO computerDAO = null;
 	
 	private static final String SELECT_ALL_COMPUTER = "SELECT  computer.id, computer.name, computer.introduced, computer.discontinued, "
 														+ "computer.company_id, company.name AS company_name "
 														+ "FROM computer, company "
 														+ "WHERE computer.company_id = company.id;";
 	
-	private static final String SELECT_ONE_COMPUTE = "SELECT  computer.id, computer.name, computer.introduced, computer.discontinued, "
+	private static final String SELECT_ONE_COMPUTE  = "SELECT  computer.id, computer.name, computer.introduced, computer.discontinued, "
 														+ "computer.company_id, company.name AS company_name "
 														+ "FROM computer, company "
 														+ "WHERE computer.company_id = company.id "
@@ -40,6 +41,21 @@ public class ComputerDAO {
 														+ "SET discontinued = ? "
 														+ "SET company_id = ? "
 														+ "WHERE id = idSearch ;";
+	
+	private static final String DELETE_ONE_COMPUTER = "DELETE  from computer "
+														+ "WHERE id = ?";
+	
+	private ComputerDAO() {
+		System.out.println("Singleton ComputerDAO créé");
+	};
+	
+	
+	public static ComputerDAO getComputerDAO() {
+		if(computerDAO == null) { 
+			computerDAO = new ComputerDAO();
+		}
+		return computerDAO;
+	}
 												
 	
 	public List<Computer> findAll() {
@@ -127,8 +143,8 @@ public class ComputerDAO {
 			//LocalDate.parse("2011-25-04", DateTimeFormatter.ISO_DATE);
 			PreparedStatement prepState = connect.prepareStatement(UPDATE_ONE);
 			prepState.setString(1,"macbook pro 16 toutes options" );
-			prepState.setDate(2, "2011-25-04");
-			prepState.setDate(3, "2011-25-04");
+			//prepState.setDate(2, "2011-25-04");
+			//prepState.setDate(3, "2011-25-04");
 			prepState.setInt(4, 2);
 			
 			prepState.executeUpdate();
@@ -141,11 +157,10 @@ public class ComputerDAO {
 
 	public void delete(int idSearch) {
 		try {
-			//constant
-			String deleteOneComputer = "DELETE from computer "
-										+ "WHERE id = ?";
 			
-			PreparedStatement prepState = connect.prepareStatement(deleteOneComputer);
+			
+			
+			PreparedStatement prepState = connect.prepareStatement(DELETE_ONE_COMPUTER);
 			prepState.setInt(1, idSearch);
 			prepState.executeUpdate();
 			//use logger instead of println

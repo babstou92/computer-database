@@ -13,11 +13,26 @@ import com.excilys.models.Company;
 
 public class CompanyDAO  {
 	
-	private static final String SELECT_ALL_COMPUTER  = "SELECT * FROM company ;";
-												
-	
+	//instanciation unique non-initialisée
+	private static CompanyDAO companyDAO = null;
+	private static final String SELECT_ALL_COMPUTER  = "SELECT * FROM company ;";												
 	//appelle la methode static de la classe CoSQL - stocke le return dans l'objet connect de la classe Connection
 	public Connection connect = ConnectionSQL.seConnecter();
+	
+	//constructeur privé pour garantir une unique instance de la classe
+	private CompanyDAO() {
+		System.out.println("Singleton CompanyDAO créé");
+	};
+	
+	
+	
+	//methode public pour initialiser l'unique instance de la classe
+	public static CompanyDAO getCompanyDAO() {
+		if(companyDAO == null) {
+			companyDAO = new CompanyDAO();
+		}
+		return companyDAO;
+	}
 	
 	//methode pour recup tous les elements de la table Company
 	public List<Company> findAll() {
@@ -26,7 +41,6 @@ public class CompanyDAO  {
 		
 		try {             
 			//on stocke le resultat de la requete dans l'obj resultat - this correspond a l'instance de CompanyDAO appellant la methode
-			//createStatement contient la requete SQL et la transmet à la BDD - executeQ methode de la classe Statement pour lire des données
 			PreparedStatement statement = connect.prepareStatement(SELECT_ALL_COMPUTER);
 			ResultSet resultat = statement.executeQuery();
 			
