@@ -7,6 +7,7 @@ public class ServiceCompany {
     
     private static CompanyDAO companyDAO = CompanyDAO.getCompanyDAO();
     
+    
     public static void findAllCompany() {
         for(Company company : companyDAO.findAll()) {
             System.out.println(company.toString());

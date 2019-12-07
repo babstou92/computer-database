@@ -9,7 +9,6 @@ public class ServiceComputer {
 	
 	private static ComputerDAO computerDAO = ComputerDAO.getComputerDAO();
 	
-
 	
 	public static void findAllComputer() {
 		for(Computer computer : computerDAO.findAll()) {
