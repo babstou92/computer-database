@@ -1,6 +1,8 @@
 package com.excilys.service;
 
 
+import java.sql.Date;
+
 import com.excilys.dao.ComputerDAO;
 import com.excilys.models.Computer;
 
@@ -20,16 +22,16 @@ public class ServiceComputer {
 		System.out.println((computerDAO.findOne(id)).toString());
 	}
 	
-	public static void deleteOneComputer() {
-		computerDAO.delete(13);
+	public static void deleteOneComputer(int id) {
+		computerDAO.delete(id);
 	}
 	
-	public static void createOneComputer() {
-		computerDAO.create("MacBook 16", null, null, 2);
+	public static void createOneComputer(String computerName, Date introduced, Date discontinued, int company_id) {
+		computerDAO.create(computerName, introduced, discontinued, company_id);
 	}
-	//a terminé
-	public static void updateOneComputer() {
-		//computerDAO.update(63);
+
+	public static void updateOneComputer(String computerName, Date introduced, Date discontinued, int company_id, int idSearch) {
+		computerDAO.update(computerName, introduced, discontinued, company_id, idSearch);
 	}
 
 }

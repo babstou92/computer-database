@@ -22,17 +22,22 @@ public class ComputerDAO {
 	private static ComputerDAO computerDAO = null;
 	
 	private static final String SELECT_ALL_COMPUTER = "SELECT  computer.id, computer.name, computer.introduced, computer.discontinued, "
+
+
 														+ "computer.company_id, company.name AS company_name "
 														+ "FROM computer, company "
 														+ "WHERE computer.company_id = company.id;";
 	
-	private static final String SELECT_ONE_COMPUTE  = "SELECT  computer.id, computer.name, computer.introduced, computer.discontinued, "
+	private static final String SELECT_ONE_COMPUTER  = "SELECT  computer.id, computer.name, computer.introduced, computer.discontinued, "
 														+ "computer.company_id, company.name AS company_name "
 														+ "FROM computer, company "
 														+ "WHERE computer.company_id = company.id "
 														+ "AND company.id = ? ;";
 	
 	private static final String CREATE_ONE_COMPUTER = "INSERT into computer (id,name,introduced,discontinued,company_id) "
+
+
+
 														+ "VALUES (63,?,?,?,?)";
 	
 	private static final String UPDATE_ONE          = "UPDATE computer "
@@ -47,11 +52,13 @@ public class ComputerDAO {
 														+ "WHERE id = ?";
 	
 	private ComputerDAO() {
+
 		System.out.println("Singleton ComputerDAO créé");
 	};
 	
 	
 	public static ComputerDAO getComputerDAO() {
+
 		if(computerDAO == null) { 
 			computerDAO = new ComputerDAO();
 		}
@@ -95,7 +102,7 @@ public class ComputerDAO {
 		
 		try {
 			
-			PreparedStatement prepState = connect.prepareStatement(SELECT_ONE_COMPUTE);
+			PreparedStatement prepState = connect.prepareStatement(SELECT_ONE_COMPUTER);
 			prepState.setInt(1, idSearch);
 			
 			ResultSet resultat = prepState.executeQuery();	
@@ -124,8 +131,8 @@ public class ComputerDAO {
 			
 			PreparedStatement prepState = connect.prepareStatement(CREATE_ONE_COMPUTER);
 			prepState.setString(1, computerName);
-			prepState.setDate(2, introduced);
-			prepState.setDate(3, discontinued);
+			prepState.setTimestamp(2, new Timestamp(introduced.getTime()));
+			prepState.setTimestamp(3, new Timestamp(discontinued.getTime()));
 			prepState.setInt(4, company_id);
 			prepState.executeUpdate();
 			
@@ -141,7 +148,6 @@ public class ComputerDAO {
 	public void update(String computerName, Date introduced, Date discontinued, int company_id, int idSearch) {
 		try { 
 			
-			//LocalDate.parse("2011-25-04", DateTimeFormatter.ISO_DATE);
 			PreparedStatement prepState = connect.prepareStatement(UPDATE_ONE);
 			prepState.setString(1,computerName );
 			prepState.setTimestamp(2, new Timestamp(introduced.getTime()));
