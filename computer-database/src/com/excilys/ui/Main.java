@@ -2,7 +2,8 @@ package com.excilys.ui;
 
 import java.util.Scanner;
 
-import com.excilys.service.Service;
+import com.excilys.service.ServiceCompany;
+import com.excilys.service.ServiceComputer;
 
 public class Main {
 
@@ -27,18 +28,18 @@ public class Main {
 			if(1 <= choixCommande && choixCommande <= 4 ) {		
 				switch (choixCommande) {
 				case 1: 
-					Service.findAllCompany(); 
+					ServiceCompany.findAllCompany(); 
 					break;
 				case 2:
-					Service.findAllComputer();
+					ServiceComputer.findAllComputer();
 					break;
 				case 3:
 					System.out.println("Veuillez choisir un Id");
 					choixId = scanner.nextInt();
-					Service.findOneComputer(choixId);
+					ServiceComputer.findOneComputer(choixId);
 					break;
 				case 4:
-					Service.createOneComputer();
+					ServiceComputer.createOneComputer();
 					break;
 				}
 			
@@ -54,10 +55,10 @@ public class Main {
 						if(choixCommande == 1 || choixCommande == 2) {		
 							switch (choixCommande) {
 								case 1: 
-									Service.updateOneComputer(); 
+									ServiceComputer.updateOneComputer(); 
 									break;
 								case 2:
-									Service.deleteOneComputer();
+									ServiceComputer.deleteOneComputer();
 									break;
 							}
 					

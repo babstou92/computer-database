@@ -1,20 +1,15 @@
 package com.excilys.service;
 
-import com.excilys.dao.CompanyDAO;
+
 import com.excilys.dao.ComputerDAO;
-import com.excilys.models.Company;
 import com.excilys.models.Computer;
 
-public class Service {
+public class ServiceComputer {
 	
-	private static CompanyDAO companyDAO = CompanyDAO.getCompanyDAO();
+	
 	private static ComputerDAO computerDAO = ComputerDAO.getComputerDAO();
 	
-	public static void findAllCompany() {
-		for(Company company : companyDAO.findAll()) {
-			System.out.println(company.toString());
-		}
-	}
+
 	
 	public static void findAllComputer() {
 		for(Computer computer : computerDAO.findAll()) {
@@ -37,5 +32,5 @@ public class Service {
 	public static void updateOneComputer() {
 		//computerDAO.update(63);
 	}
-	//juste pour test
+
 }
