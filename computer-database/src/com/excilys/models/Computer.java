@@ -75,7 +75,7 @@ public class Computer {
 	public String toString() {
 		return "Computer [idComputer=" + idComputer + ", nameComputer=" + nameComputer + ", introducedDateComputer="
 				+ introducedDateComputer + ", discontinuedDateComputer=" + discontinuedDateComputer
-				+ ", companyIdComputer=" + companyIdComputer + ", company=" + company + "]";
+				+", company=" + company + "]";
 	}
 
 	
