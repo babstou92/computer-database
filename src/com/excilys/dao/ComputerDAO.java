@@ -105,11 +105,11 @@ public class ComputerDAO {
 			
 			ResultSet resultat = prepState.executeQuery();	
 			resultat.next();
-				int company_id = resultat.getInt("company_id");
-				Date dateDis = resultat.getDate("discontinued");
-				Date dateInt = resultat.getDate("introduced");
-				String name = resultat.getString("name");				
-				String company_name = resultat.getString("company_name");
+			int company_id = resultat.getInt("company_id");
+			Date dateDis = resultat.getDate("discontinued");
+			Date dateInt = resultat.getDate("introduced");
+			String name = resultat.getString("name");				
+			String company_name = resultat.getString("company_name");
 
 				//call mapper
 				computer = new Computer(idSearch, name, dateInt, dateDis, new Company(company_id, company_name)); 
